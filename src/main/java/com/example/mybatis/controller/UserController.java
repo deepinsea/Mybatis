@@ -21,13 +21,19 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
-    @PostMapping("/getUserInfo/all")
+    @PostMapping("/get/one")
     public String query(){
         User user=new User();
         String now = String.valueOf(user.getCreatedTime());
         System.out.println(now);
+        System.out.println(userMapper.getAllUser().toString());
+        return "用户信息查询成功,用户信息为:"+userMapper.getAllUser().toString();
+    }
+
+    @PostMapping("/get/all")
+    public String getAll(){
         System.out.println(userMapper.getAllUser());
-        return "用户信息查询成功,用户信息为:"+userMapper.getAllUser();
+        return "用户信息为："+userMapper.getAllUser();
     }
 
     @PostMapping("/add")
@@ -39,9 +45,10 @@ public class UserController {
         String now = sd.format(date);
         System.out.println(now);
         user.setCreatedTime(date);
+        user.setUpdatedTime(date);
         userMapper.insertUser(user);
         System.out.println(user.getName());
-        return "用户表保存成功，用户为:"+String.valueOf(user);
+        return "用户表保存成功，用户为:"+user;
     }
     @DeleteMapping("/delete/all")
     public String delete() {

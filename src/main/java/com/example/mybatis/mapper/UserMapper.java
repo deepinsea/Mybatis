@@ -7,8 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-
 /**
  * @author 南街北巷
  * @data 2020/4/21 22:42
@@ -27,7 +25,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    @Insert("insert into mybatis(name,age,created_time) values(#{name},#{age},#{createdTime})")
+    @Insert("insert into mybatis(name,age,created_time,updated_time) values(#{name},#{age},#{createdTime},#{updatedTime})")
     void insertUser(User user);
     /**
      * 删除所有用户
