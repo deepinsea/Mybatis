@@ -1,11 +1,10 @@
 package com.example.mybatis.mapper;
 
 import com.example.mybatis.entity.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author 南街北巷
@@ -19,7 +18,15 @@ public interface UserMapper {
      * @return
      */
     @Select("select * from mybatis")
-    User getAllUser();
+    List<User> getAllUser();
+
+    /**
+     * 根据名字查询
+     * @param name
+     * @return
+     */
+    @Select("select * from mybatis where name=#{name}")
+    List<User> getByName(String name);
     /**
      * 新增用户
      * @param user
@@ -44,5 +51,6 @@ public interface UserMapper {
      * 更新用户
      * @param user
      */
-    void updateUser(User user);
+    @Update("update mybatis set name=#{name},age=#{age},updated_time=#{updatedTime} where id=#{id}")
+    void updateUserById(User user);
 }
