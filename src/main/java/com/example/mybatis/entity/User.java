@@ -15,6 +15,7 @@ public class User {
     private Integer id;
     private String name;
     private int age;
+    private String icon;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date createdTime;

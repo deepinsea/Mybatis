@@ -86,7 +86,7 @@ public class UserController {
 
     @PostMapping("/get/byPage")
     public String byPage(@RequestBody Page page) {
-        //注意：这里PageHelper中的Page类是不允许重写的，只能重写自己的Page工具类
+        //注意：这里PageHelper中的Page类是不允许重写的，只能重写自己的Page工具类,因此
         PageHelper.startPage(page.getCurrentPage(),page.getPageSize());
         List<User> list = userMapper.getAllUser();
         System.out.println(list);
@@ -94,5 +94,4 @@ public class UserController {
         System.out.println(pageInfo);
         return "分页查询成功" + pageInfo;
     }
-
 }

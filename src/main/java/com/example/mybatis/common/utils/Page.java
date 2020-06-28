@@ -1,12 +1,13 @@
 package com.example.mybatis.common.utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author 南街北巷
  * @data 2020/5/20 1:39
  */
-public class Page<T> {
+public class Page<T> implements Serializable {
     /**
      * 当前页
      */
